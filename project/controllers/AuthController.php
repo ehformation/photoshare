@@ -6,4 +6,8 @@ class AuthController extends Controller{
     function login(){
         $this->render('login');
     }
+
+    function register(){
+        $this->render('register');
+    }
 }
