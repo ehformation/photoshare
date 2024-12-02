@@ -1,7 +1,9 @@
 <?php 
-class AuthController {
+require_once __DIR__ . '/../core/Controller.php';
+
+class AuthController extends Controller{
 
     function login(){
-        echo "toto";
+        $this->render('login');
     }
 }
