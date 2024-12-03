@@ -21,7 +21,7 @@ class UserModel extends Model{
         $req = $bdd->prepare("SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?");
         $res = $req->execute([$username, $username, $password]);
 
-        $user = $res->fetch(PDO:FETCH_ASSOC);
+        $user = $req->fetch(PDO::FETCH_ASSOC);
 
         if($user){
             $_SESSION['user'] = $user;

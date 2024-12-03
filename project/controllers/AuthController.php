@@ -10,7 +10,11 @@ class AuthController extends Controller{
             $password = trim($_POST['pass']);
 
             $errors = [];
-            $errors = $this->validateInput($_POST);
+            $errors = $this->validateInput([
+                'username' => $username,
+                'password' => $password
+            ]);
+
 
             $userModel = new UserModel();
             $response = $userModel->login($username, $password);
@@ -19,11 +23,20 @@ class AuthController extends Controller{
                 header("Location: index.php?action=index&entity=home");
                 exit;
             }else{
-                $errors[] = "Username/Email ou mot de passe invalide";
+                if($errors == true)
+                    $errors = array("Username/Email ou mot de passe invalide");
+                else 
+                    $errors[] = "Username/Email ou mot de passe invalide";
             }
 
         }
-        $this->render('login');
+
+        $data = [];
+        if (!empty($errors)) {
+            $data['errors'] = $errors; 
+        } 
+
+        $this->render('login', $data);
     }
 
     function register() {
@@ -33,7 +46,11 @@ class AuthController extends Controller{
             $password = trim($_POST['pass']);
             
             $errors = [];
-            $errors = $this->validateInput($_POST);
+            $errors = $this->validateInput([
+                'username' => $username,
+                'email' => $email,
+                'pass' => $password
+            ]);
 
             if($errors === true){
                 $userModel = new UserModel();
