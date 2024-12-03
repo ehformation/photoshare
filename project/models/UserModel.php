@@ -5,7 +5,7 @@ require_once __DIR__ . '/../core/Model.php';
 class UserModel extends Model{
 
     function register($username, $email, $password) {
-        $bdd = $this->$pdo;
+        $bdd = $this->pdo;
         $req = $bdd->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
 
         $res = $req->execute([$username, $email, $password]);
@@ -17,7 +17,7 @@ class UserModel extends Model{
     }
 
     function login($username, $password){
-        $bdd = $this->$pdo;
+        $bdd = $this->pdo;
         $req = $bdd->prepare("SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?");
         $res = $req->execute([$username, $username, $password]);
 
