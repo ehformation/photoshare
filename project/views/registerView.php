@@ -17,6 +17,15 @@
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Inscription</p>
+                <?php if(isset($errors) && count($errors) > 0 )  : ?>
+                  <div class="alert alert-danger">
+                    <ul>
+                    <?php foreach($errors as $error) : ?>
+                      <li><?php echo $error ?></li>
+                    <?php endforeach; ?>
+                    </ul>
+                  </div>
+                <?php endif; ?>
                 <?php if(isset($response) && $response != true) : ?>
                   <div class="alert alert-danger"><?php echo $response ?></div>
                 <?php endif; ?>

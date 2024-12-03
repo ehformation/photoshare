@@ -10,18 +10,51 @@ class AuthController extends Controller{
 
     function register() {
         if(isset($_POST["inscription"])){
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['pass'];
+            $username = trim($_POST['username']);
+            $email = trim($_POST['email']);
+            $password = trim($_POST['pass']);
             
-            $userModel = new UserModel();
-            $response = $userModel->register($username, $email, $password);
-            if($response){
-                header("Location: ?action=login&entity=auth");
-                exit;
-            }
+            $errors = [];
+            $errors = $this->validateInput($username, $email, $password);
 
+            if($errors === true){
+                $userModel = new UserModel();
+                $response = $userModel->register($username, $email, $password);
+                if($response){
+                    header("Location: ?action=login&entity=auth");
+                    exit;
+                }
+            }
         }
-        $this->render('register'); 
+
+        $data = [];
+        if (!empty($errors)) {
+            $data['errors'] = $errors; 
+        }
+
+        $this->render('register', $data);
+    }
+
+    private function validateInput($username, $email, $password) {
+        $errors = [];
+
+        if(empty($username)) {
+            $errors[] = "Le nom d'utilisateur est requis.";   
+        }
+        if(empty($email)) {
+            $errors[] = "L'email est requis.";   
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "L'email n'est pas valide.";
+        }
+        if(empty($password)) {
+            $errors[] = "Le mot de passe est requis.";   
+        }
+
+        if(!empty($errors)){
+            return $errors;
+        }
+
+        return true;
+
     }
 }
