@@ -4,8 +4,8 @@ class Dispatcher {
         $entityName = $_GET['entity'] ?? 'auth';
         $actionName = $_GET['action'] ?? 'login';
 
-        $entityClass = ucfirst($entityName) . 'Controller'; 
-        $entityFile = __DIR__ .'/../controllers/' . $entityClass . '.php'; 
+        $entityClass = ucfirst($entityName) . 'Controller';
+        $entityFile = __DIR__ .'/../controllers/' . $entityClass . '.php';
         
         if (file_exists($entityFile)) {
             require_once $entityFile;
