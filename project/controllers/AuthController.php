@@ -5,6 +5,24 @@ require_once __DIR__ . '/../models/UserModel.php';
 class AuthController extends Controller{
 
     function login(){
+        if(isset($_POST["connexion"])){
+            $username = trim($_POST['username']);
+            $password = trim($_POST['pass']);
+
+            $errors = [];
+            $errors = $this->validateInput($_POST);
+
+            $userModel = new UserModel();
+            $response = $userModel->login($username, $password);
+            
+            if($response){
+                header("Location: index.php?action=index&entity=home");
+                exit;
+            }else{
+                $errors[] = "Username/Email ou mot de passe invalide";
+            }
+
+        }
         $this->render('login');
     }
 
@@ -15,7 +33,7 @@ class AuthController extends Controller{
             $password = trim($_POST['pass']);
             
             $errors = [];
-            $errors = $this->validateInput($username, $email, $password);
+            $errors = $this->validateInput($_POST);
 
             if($errors === true){
                 $userModel = new UserModel();
@@ -35,26 +53,37 @@ class AuthController extends Controller{
         $this->render('register', $data);
     }
 
-    private function validateInput($username, $email, $password) {
+    private function validateInput($fields) {
         $errors = [];
+    
+        foreach ($fields as $field => $value) {
+            switch ($field) {
+                case 'username':
+                    if (empty($value)) {
+                        $errors['username'] = "Le nom d'utilisateur est requis.";
+                    } 
+                    break;
+    
+                case 'email':
+                    if (empty($value)) {
+                        $errors['email'] = "L'email est requis.";
+                    } elseif (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                        $errors['email'] = "L'email n'est pas valide.";
+                    }
+                    break;
+    
+                case 'pass':
+                    if (empty($value)) {
+                        $errors['password'] = "Le mot de passe est requis.";
+                    }
+                    break;
 
-        if(empty($username)) {
-            $errors[] = "Le nom d'utilisateur est requis.";   
+                default:
+                    break;
+            }
         }
-        if(empty($email)) {
-            $errors[] = "L'email est requis.";   
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "L'email n'est pas valide.";
-        }
-        if(empty($password)) {
-            $errors[] = "Le mot de passe est requis.";   
-        }
-
-        if(!empty($errors)){
-            return $errors;
-        }
-
-        return true;
-
+    
+        return !empty($errors) ? $errors : true;
     }
+    
 }

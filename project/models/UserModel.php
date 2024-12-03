@@ -15,4 +15,18 @@ class UserModel extends Model{
             return "Erreur lors de l'inscription. Veuillez réessayer.";
         }
     }
+
+    function login($username, $password){
+        $bdd = $this->$pdo;
+        $req = $bdd->prepare("SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?");
+        $res = $req->execute([$username, $username, $password]);
+
+        $user = $res->fetch(PDO:FETCH_ASSOC);
+
+        if($user){
+            $_SESSION['user'] = $user;
+            return true;
+        }
+        return false;
+    }
 }
