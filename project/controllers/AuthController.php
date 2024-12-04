@@ -43,7 +43,7 @@ class AuthController extends Controller{
         if(isset($_POST["inscription"])){
             $username = trim($_POST['username']);
             $email = trim($_POST['email']);
-            $password = trim($_POST['pass']);
+            $password = password_hash( trim($_POST['pass']), PASSWORD_BCRYPT);
             
             $errors = [];
             $errors = $this->validateInput([

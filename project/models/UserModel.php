@@ -18,12 +18,12 @@ class UserModel extends Model{
 
     function login($username, $password){
         $bdd = $this->pdo;
-        $req = $bdd->prepare("SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?");
-        $res = $req->execute([$username, $username, $password]);
+        $req = $bdd->prepare("SELECT * FROM users WHERE (username = ? OR email = ?)");
+        $res = $req->execute([$username, $username]);
 
         $user = $req->fetch(PDO::FETCH_ASSOC);
 
-        if($user){
+        if($user && password_verify($password, $user['password']  )){
             $_SESSION['user'] = $user;
             return true;
         }
