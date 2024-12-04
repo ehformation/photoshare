@@ -55,7 +55,7 @@
                     <a class="nav-link" href="#"><?php echo $_SESSION['user']['username'] ?></a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Se déconnecter</a>
+                    <a class="nav-link" href="?action=logout&entity=auth">Se déconnecter</a>
                     </li>
                 </ul>
             <?php else :  ?>

@@ -102,5 +102,11 @@ class AuthController extends Controller{
     
         return !empty($errors) ? $errors : true;
     }
+
+    function logout(){
+        session_destroy();
+        header('Location: ?action=login&entity=auth');
+        exit;
+    }
     
 }
