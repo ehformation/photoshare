@@ -23,9 +23,19 @@ class LikeModel extends Model{
     
             return $res;
         }
-
         return false;
-        
+    }
+
+    function delete_like($post_id, $user_id){
+        $bdd = $this->pdo;
+
+        if($this->userAlreadyLike($post_id, $user_id)){
+            $req = $bdd->prepare("DELETE FROM likes WHERE user_id = ? AND post_id= ? ");
+            $res = $req->execute([$user_id, $post_id]);
+    
+            return $res;
+        }
+        return false;
     }
 
     function userAlreadyLike($post_id, $user_id){

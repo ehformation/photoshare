@@ -19,7 +19,7 @@ include __DIR__ . '/partials/header.php';
                 </div>
                 <div>
                     <?php if($post['alreadyLike']) : ?>
-                        <a href=""><i class="bi bi-balloon-heart-fill text-danger h4"></i></a>
+                        <a href="?action=delete_like&entity=like&post_id=<?php echo $post['id'] ?>"><i class="bi bi-balloon-heart-fill text-danger h4"></i></a>
                     <?php else : ?>
                         <a href="?action=add_like&entity=like&post_id=<?php echo $post['id'] ?>"><i class="bi bi-balloon-heart text-danger h4"></i></a>
                     <?php endif; ?>
