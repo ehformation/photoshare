@@ -6,13 +6,13 @@ include __DIR__ . '/partials/header.php';
     <?php if(!empty($posts)) : ?>
     <?php foreach ($posts as $post) : ?>
         <div class="card mb-3">
-            <div class="card-body">
+            <img src="../assets/img/posts/<?php echo $post['image'] ?>" class="card-img-top" alt="Camera"/>
+            <div class="card-body bg-dark text-white">
                 <h5 class="card-title"><?php echo $post['legende'] ?></h5>
-                <p class="card-text">
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <p class="card-text ">
+                <small class="text-muted"><span class="text-light font-italic">Il y'a <?php echo $post['last_updated'] ?></span>  </small>
                 </p>
             </div>
-            <img src="../assets/img/posts/<?php echo $post['image'] ?>" class="card-img-bottom" alt="Camera"/>
         </div>
     <?php endforeach; ?>
     <?php else : ?>
