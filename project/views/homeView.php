@@ -13,6 +13,18 @@ include __DIR__ . '/partials/header.php';
                 <small class="text-muted"><span class="text-light font-italic">Il y'a <?php echo $post['last_updated'] ?></span>  </small>
                 </p>
             </div>
+            <div class="card-footer d-flex justify-content-between">
+                <div>
+                    <?php echo $post['nbr_likes'] ?> J'aime
+                </div>
+                <div>
+                    <?php if($post['alreadyLike']) : ?>
+                        <a href=""><i class="bi bi-balloon-heart-fill text-danger h4"></i></a>
+                    <?php else : ?>
+                        <a href="?action=add_like&entity=like&post_id=<?php echo $post['id'] ?>"><i class="bi bi-balloon-heart text-danger h4"></i></a>
+                    <?php endif; ?>
+                </div>
+            </div>
         </div>
     <?php endforeach; ?>
     <?php else : ?>
