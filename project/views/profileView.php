@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . '/partials/header.php';
 ?>
+<?php if(isset($user)) : ?>
 <div class="container my-4">
 <div class="row gutters">
 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -8,15 +9,23 @@ include __DIR__ . '/partials/header.php';
 	<div class="card-body">
 		<div class="account-settings">
 			<div class="user-profile">
-				<div class="user-avatar">
-					<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+				<div class="user-avatar mb-4">
+                    <?php if($user['picture'] != '') : ?>
+					    <img src="../assets/img/users/<?php echo $user['picture'] ?>" alt="Maxwell Admin" width="100%">
+                    <?php endif; ?>
 				</div>
-				<h5 class="user-name">Yuki Hayashi</h5>
-				<h6 class="user-email">yuki@Maxwell.com</h6>
+                <?php if($user['nom_prenom'] != '') : ?>
+				    <h5 class="user-name"><?php echo $user['nom_prenom'] ?></h5>
+                <?php else : ?>
+                    <h5 class="user-name"><?php echo $user['username'] ?></h5>
+                <?php endif; ?>   
+				<h6 class="user-email"><?php echo $user['email'] ?></h6>
 			</div>
 			<div class="about">
 				<h5>Bio</h5>
-				<p>I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+                <?php if($user['bio'] != '') : ?>
+				    <p><?php echo $user['bio'] ?></p>
+                <?php endif; ?> 
 			</div>
 		</div>
 	</div>
@@ -32,19 +41,19 @@ include __DIR__ . '/partials/header.php';
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="fullName">Nom & Prénom</label>
-					<input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+					<input type="text" class="form-control" id="fullName" placeholder="Nom prénom" value="<?php echo $user['nom_prenom'] ?? '' ?>">
 				</div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="eMail">Email</label>
-					<input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
+					<input type="email" class="form-control" id="eMail" placeholder="Email" value="<?php echo $user['email']; ?>">
 				</div>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 				<div class="form-group">
 					<label for="phone">Tel.</label>
-					<input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+					<input type="text" class="form-control" id="phone" placeholder="Tel." value="<?php echo $user['tel'] ?? '' ?>">
 				</div>
 			</div>
 		</div>
@@ -61,6 +70,7 @@ include __DIR__ . '/partials/header.php';
 </div>
 </div>
 </div>
+<?php endif; ?>
 <?php
 include __DIR__ . '/partials/footer.php';
 ?>
