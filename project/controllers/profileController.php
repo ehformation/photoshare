@@ -9,6 +9,17 @@ class ProfileController extends Controller{
         $userModel = new UserModel();
         $user = $userModel->getUserById($user_id);
 
+        if(isset($_POST["edit"])){
+            $nompre = $_POST["nompre"];
+            $email = $_POST["email"];
+            $tel = $_POST["tel"];
+
+            $editUser = $userModel->editUserById($nompre, $tel, $email, $user_id);
+
+        }
+        
+        $user = $userModel->getUserById($user_id);
+        
         $this->render('profile', ['user' => $user]);
     }
 }

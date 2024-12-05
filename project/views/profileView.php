@@ -38,33 +38,35 @@ include __DIR__ . '/partials/header.php';
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<h6 class="mb-2 text-primary">Info personelle</h6>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="fullName">Nom & Prénom</label>
-					<input type="text" class="form-control" id="fullName" placeholder="Nom prénom" value="<?php echo $user['nom_prenom'] ?? '' ?>">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="eMail">Email</label>
-					<input type="email" class="form-control" id="eMail" placeholder="Email" value="<?php echo $user['email']; ?>">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="phone">Tel.</label>
-					<input type="text" class="form-control" id="phone" placeholder="Tel." value="<?php echo $user['tel'] ?? '' ?>">
-				</div>
-			</div>
-		</div>
-		<div class="row gutters mt-4">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="text-right">
-					<button type="button" id="submit" name="submit" class="btn btn-secondary">Annuler</button>
-					<button type="button" id="submit" name="submit" class="btn btn-primary">Modifier</button>
-				</div>
-			</div>
-		</div>
+            <form action="?action=index&entity=profile" method="post">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="fullName">Nom & Prénom</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Nom prénom" name="nompre" value="<?php echo $user['nom_prenom'] ?? '' ?>">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="eMail">Email</label>
+                        <input type="email" class="form-control" id="eMail" placeholder="Email" name="email" value="<?php echo $user['email']; ?>">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="phone">Tel.</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Tel." name="tel" value="<?php echo $user['tel'] ?? '' ?>">
+                    </div>
+                </div>
+            </div>
+            <div class="row gutters mt-4">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                        <button type="reset" id="submit" name="reset" class="btn btn-secondary">Annuler</button>
+                        <button type="submit" id="submit" name="edit" class="btn btn-primary">Modifier</button>
+                    </div>
+                </div>
+            </div>
+        </form>
 	</div>
 </div>
 </div>

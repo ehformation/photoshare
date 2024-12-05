@@ -38,4 +38,11 @@ class UserModel extends Model{
         $user = $req->fetch(PDO::FETCH_ASSOC);
         return $user;
     }
+
+    function editUserById($nompre, $tel, $email, $user_id) {
+        $bdd = $this->pdo;
+        $req = $bdd->prepare("UPDATE users SET nom_prenom = ?, tel = ?, email = ? WHERE id = ? ");
+        $res = $req->execute([$nompre, $tel, $email, $user_id]);
+        return $res;
+    }
 }
