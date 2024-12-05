@@ -2,7 +2,7 @@
 include __DIR__ . '/partials/header.php';
 ?>
 <div class="container col-4">
-    <form class="my-4">
+    <form method="post" action="?entity=post&action=add" enctype="multipart/form-data" class="my-4">
         <div class="card">
             <div class="card-body">
                 <!-- Name input -->
@@ -19,7 +19,7 @@ include __DIR__ . '/partials/header.php';
 
                 <!-- Submit button -->
                 <div class="d-grid gap-2">
-                    <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4">Poster</button>
+                    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Poster</button>
                 </div>
             </div>
         </div>
