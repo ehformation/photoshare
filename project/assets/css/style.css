@@ -1,0 +1,108 @@
+/* Variables CSS pour le thème Photoshare */
+:root {
+    /* Couleurs principales */
+    --bs-primary: #ff6f91; /* Couleur principale (rose dynamique) */
+    --bs-secondary: #6c757d; /* Couleur secondaire */
+    --bs-success: #28a745; /* Vert tropical pour succès */
+    --bs-info: #17a2b8; /* Bleu clair pour infos */
+    --bs-warning: #ffcc00; /* Jaune vif pour alertes */
+    --bs-danger: #dc3545; /* Rouge pour erreurs */
+    --bs-light: #f8f9fa; /* Fond clair */
+    --bs-dark: #1c1c1c; /* Noir profond pour texte */
+
+    /* Typographie */
+    --bs-font-sans-serif: 'Poppins', sans-serif;
+    --bs-font-monospace: 'Courier New', monospace;
+    --bs-font-size-base: 1.125rem;
+    --bs-font-weight-base: 400;
+
+    /* Bordures et arrondis */
+    --bs-border-width: 2px;
+    --bs-border-radius: 0.5rem;
+
+    /* Espacements */
+    --bs-spacer: 1.5rem;
+
+    /* Boutons */
+    --bs-btn-primary-bg: #ff6f91; /* Fond bouton principal */
+    --bs-btn-primary-color: #ffffff; /* Texte bouton principal */
+    --bs-btn-secondary-bg: #6c757d; /* Fond bouton secondaire */
+    --bs-btn-secondary-color: #ffffff; /* Texte bouton secondaire */
+    --bs-btn-font-weight: 500;
+    --bs-btn-border-radius: 0.5rem;
+
+    /* Images */
+    --bs-img-thumbnail-border-color: #dee2e6;
+
+    /* Navbars */
+    --bs-navbar-light-bg: #ffffff;
+    --bs-navbar-light-color: #000000;
+}
+
+/* Personnalisation des boutons */
+button.btn-primary {
+    background-color: var(--bs-btn-primary-bg);
+    color: var(--bs-btn-primary-color);
+    border-radius: var(--bs-btn-border-radius);
+    font-weight: var(--bs-btn-font-weight);
+    transition: all 0.3s ease;
+}
+button.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button.btn-secondary {
+    background-color: var(--bs-btn-secondary-bg);
+    color: var(--bs-btn-secondary-color);
+    border-radius: var(--bs-btn-border-radius);
+    font-weight: var(--bs-btn-font-weight);
+}
+button.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Style des cartes */
+.card {
+    background-color: var(--bs-light);
+    border-radius: var(--bs-border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Style des images */
+img {
+    border-radius: var(--bs-border-radius);
+}
+
+/* Messages */
+.alert-success {
+    background-color: var(--bs-success);
+    color: #ffffff;
+}
+.alert-danger {
+    background-color: var(--bs-danger);
+    color: #ffffff;
+}
+.alert-warning {
+    background-color: var(--bs-warning);
+    color: #1c1c1c;
+}
+
+/* Navbars */
+.navbar {
+    padding: var(--bs-navbar-light-bg);
+    background-color: var(--bs-navbar-light-bg);
+}
+.navbar-light .navbar-nav .nav-link {
+    color: var(--bs-navbar-light-color);
+}
+
+/* Grilles et espaces */
+.section {
+    padding: var(--bs-spacer) 0;
+}
