@@ -39,7 +39,10 @@ include __DIR__ . '/partials/header.php';
             </div>
             <div class="card-footer d-flex justify-content-between">
                 <div>
-                    <a href="#" data-bs-toggle="tooltip" data-bs-title="Default tooltip"><?php echo $post['nbr_likes'] ?> J'aime</a>
+                <a href="#" data-bs-toggle="tooltip" 
+                title="<?php echo (!empty($post['userThatLiked'])) ? implode(', ', $post['userThatLiked']) : '' ?>">
+                    <?php echo $post['nbr_likes']; ?> J'aime
+                </a>
                 </div>
                 <div>
                     <?php if($post['alreadyLike']) : ?>

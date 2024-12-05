@@ -51,4 +51,17 @@ class LikeModel extends Model{
         }
         return false;
     }
+
+    function userThatLiked($post_id, $limit = 10){
+        $bdd = $this->pdo;
+        $limit = (int) $limit;
+
+        $req = $bdd->prepare("SELECT u.username, u.nom_prenom FROM likes l JOIN users u ON l.user_id = u.id WHERE l.post_id = ?");
+        $res = $req->execute([$post_id]);
+
+        $like_user_by_post = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        return $like_user_by_post ?? 0;
+ 
+    }
 }
