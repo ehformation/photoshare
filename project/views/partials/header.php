@@ -54,7 +54,7 @@
             <?php if (isset($_SESSION['user'])): ?>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link" href="#"><?php echo $_SESSION['user']['username'] ?></a>
+                    <a class="nav-link" href="?action=index&entity=profile"><?php echo $_SESSION['user']['username'] ?></a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="?action=logout&entity=auth">Se déconnecter</a>
