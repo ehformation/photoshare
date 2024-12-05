@@ -29,4 +29,13 @@ class UserModel extends Model{
         }
         return false;
     }
+    
+    function getUserById($user_id) {
+        $bdd = $this->pdo;
+        $req = $bdd->prepare("SELECT * FROM users WHERE id = ?");
+        $res = $req->execute([$user_id]);
+
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+        return $user;
+    }
 }

@@ -48,7 +48,7 @@ include __DIR__ . '/partials/header.php';
 				</div>
 			</div>
 		</div>
-		<div class="row gutters">
+		<div class="row gutters mt-4">
 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="text-right">
 					<button type="button" id="submit" name="submit" class="btn btn-secondary">Annuler</button>

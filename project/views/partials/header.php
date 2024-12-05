@@ -29,7 +29,7 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <a class="navbar-brand mt-2 mt-lg-0" href="?action=index&entity=home">
             <img
             src="../assets/img/logo.png"
             height="15"
@@ -41,7 +41,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <?php if (isset($_SESSION['user'])): ?>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Accueil</a>
+                <a class="nav-link" href="?action=index&entity=home">Accueil</a>
                 </li>
             <?php endif; ?>
         </ul>
