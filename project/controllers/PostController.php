@@ -23,7 +23,7 @@ class PostController extends Controller{
                 exit("Le type de fichier n'est pas autorisé.");
             }
 
-            $destinationPath = __DIR__ . '../assets/img/posts/' . $imageName;
+            $destinationPath = __DIR__ . '/../assets/img/posts/' . $imageName;
 
             if(move_uploaded_file($imageTmpPath, $destinationPath)){
                 $postModel = new PostModel();

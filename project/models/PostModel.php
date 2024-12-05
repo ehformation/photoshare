@@ -13,7 +13,7 @@ class PostModel extends Model{
     }
     function add_post($imageName, $legende, $user_id){
         $bdd = $this->pdo;
-        $req = $bdd->query("INSERT INTO posts (image, legende, user_id) VALUES(?, ?, ?)");
+        $req = $bdd->prepare("INSERT INTO posts (image, legende, user_id) VALUES(?, ?, ?)");
         $res = $req-> execute([$imageName, $legende, $user_id]);
 
         return $res;
