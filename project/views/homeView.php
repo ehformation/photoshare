@@ -1,7 +1,7 @@
 <?php
 include __DIR__ . '/partials/header.php';
 ?>
-<div class="container col-4">
+<div class="container col-lg-4">
     <form method="post" action="?entity=post&action=add" enctype="multipart/form-data" class="my-4">
         <div class="card">
             <div class="card-body">
