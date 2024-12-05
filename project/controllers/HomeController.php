@@ -19,7 +19,7 @@ class HomeController extends Controller {
 
                 $post['nbr_likes'] = $likeModel->countLikesByPostId($post['id']);
 
-                $post['alreadyLike'] = $likeModel->countLikesByPostId($post['id'], $_SESSION['user']['id']);
+                $post['alreadyLike'] = $likeModel->userAlreadyLike($post['id'], $_SESSION['user']['id']);
             }
             
             $this->render('home', ['posts' => $posts]);
