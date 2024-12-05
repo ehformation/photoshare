@@ -2,6 +2,30 @@
 include __DIR__ . '/partials/header.php';
 ?>
 <div class="container col-4">
+    <form class="my-4">
+        <div class="card">
+            <div class="card-body">
+                <!-- Name input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="fieldImage" class="form-label">Image</label>
+                    <input class="form-control form-control-lg" id="fieldImage" name="fieldImage" type="file" />
+                </div>
+
+                <!-- Legend input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="legende">Description</label>
+                    <input type="text" id="legende" name="legende" class="form-control" />
+                </div>
+
+                <!-- Submit button -->
+                <div class="d-grid gap-2">
+                    <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4">Poster</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
     <!-- Afficher les post -->
     <?php if(!empty($posts)) : ?>
     <?php foreach ($posts as $post) : ?>
