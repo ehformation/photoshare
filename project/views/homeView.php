@@ -19,7 +19,7 @@ include __DIR__ . '/partials/header.php';
 
                 <!-- Submit button -->
                 <div class="d-grid gap-2">
-                    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Poster</button>
+                    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4" name="poster">Poster</button>
                 </div>
             </div>
         </div>
