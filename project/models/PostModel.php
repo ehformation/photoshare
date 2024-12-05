@@ -11,4 +11,11 @@ class PostModel extends Model{
 
         return $posts;
     }
+    function add_post($imageName, $legende, $user_id){
+        $bdd = $this->pdo;
+        $req = $bdd->query("INSERT INTO posts (image, legende, user_id) VALUES(?, ?, ?)");
+        $res = $req-> execute([$imageName, $legende, $user_id]);
+
+        return $res;
+    }
 }
